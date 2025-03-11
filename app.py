@@ -1,10 +1,13 @@
 import streamlit as st
 
 def main():
-    st.title("Battery Emission Calculator")
+    st.title("Emission Calculator")
+    
+    # Description
+    st.markdown("<small>Emissions happen due to acquiring raw materials like Lead and Sulphur for manufacturing electrochemical cells. Calculate emissions with respect to total sales or money spent.</small>", unsafe_allow_html=True)
     
     # User input for total annual sale of batteries
-    total_sale = st.number_input("Enter total annual sale of batteries (in currency):", min_value=0.0, step=1000.0)
+    total_sale = st.number_input("Enter total annual sale of batteries (in rupees):", min_value=0.0, step=1000.0)
     
     if total_sale > 0:
         # Calculations
@@ -15,8 +18,8 @@ def main():
         
         # Display results
         st.write(f"### Net emission is {netEmission:.2f} kg of Carbon Dioxide.")
-        st.write(f"- Lead Emission: {leadEmission:.2f} kg CO₂")
-        st.write(f"- Sulphur Emission: {sulphurEmission:.2f} kg CO₂")
+        st.markdown(f"<small>Lead Emission: {leadEmission:.2f} kg CO₂</small>", unsafe_allow_html=True)
+        st.markdown(f"<small>Sulphur Emission: {sulphurEmission:.2f} kg CO₂</small>", unsafe_allow_html=True)
     else:
         st.write("Please enter a valid sales value greater than 0.")
 
